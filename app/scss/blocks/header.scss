@@ -5,6 +5,7 @@
     min-height: 60px;
     border-style: $common-border-style;
     border-width: $common-border-width;
+    width: auto;
     //Цвет убрать
     &__title-wrapper {
         display: flex;

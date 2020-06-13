@@ -11,9 +11,7 @@ gulp.task('scss', function (done) {
 })
 
 gulp.task('watch', function () {
-    watch('./app/scss/**/*.scss', function () {
-        setTimeout(gulp.parallel('scss'), 1000)
-    })
+    watch('./app/scss/**/*.scss', gulp.parallel('scss'));
     watch(['./dist/*.html', './dist/*.css'], gulp.parallel(browserSync.reload));
 
 });
