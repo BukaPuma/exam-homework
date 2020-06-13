@@ -1,0 +1,51 @@
+%flex-class  {
+    display:flex;
+    flex-direction: column;              
+    align-items: center;   
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding-left: 16px;
+    padding-right: 16px;
+    height: auto;
+    min-height: 100vh;
+    border-style: $common-border-style;
+    border-width: $common-border-width;
+
+    &__logo {  
+        width: 48px;
+        height: 48px;
+        //убрать
+        border-bottom-width: $common-border-width;
+        border-bottom-style: $common-border-style;
+    }
+
+    &__top-wrapper {
+        @extend %flex-class;
+        justify-content: flex-start;
+    }
+
+    &__bottom-wrapper {
+        @extend %flex-class;
+        justify-content: flex-end;
+    
+        
+    }
+
+    &__icon {
+    @extend .round-icon;
+    margin-top: 16px;    
+    }
+    &__icon-mini  {
+        width: 17px;
+        height: 17px;
+        margin-top: 16px;   
+        align-items: center;        
+    }
+
+        
+}

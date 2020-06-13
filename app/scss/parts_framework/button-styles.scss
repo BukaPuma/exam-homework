@@ -1,0 +1,119 @@
+$btn-padding-left : 20px;
+$btn-padding-top : 12px;
+$btn-padding-right : 20px;
+$btn-padding-bottom : 12px;
+
+%paddings {
+    padding-left: $btn-padding-left;
+    padding-top: $btn-padding-top;
+    padding-right: $btn-padding-right;
+    padding-bottom: $btn-padding-bottom;
+    border-style: solid;
+    border-width: 2px;    
+    width: auto;
+}
+
+.no-icon {
+    &_accent {
+        &_normal {
+            background-color: col(accent_active);
+            border-color: col(accent_active);
+            @extend %paddings;
+
+        }
+        &_on-hover {
+            background-color: col(on-hover);         
+            border-color: col(on-hover);                     
+            @extend %paddings;
+        }
+        &_disable {
+            background-color: col(picked);
+            border-color: col(picked);                                 
+            @extend %paddings;
+        }
+        &-alt {
+            &_normal {
+                background-color: col(white);
+                border-color: col(accent_active);
+                @extend %paddings;
+            }
+            &_on-hover {
+                background-color: col(accent_active);        
+                border-color: col(on-hover);        
+                @extend %paddings;             
+            }
+            &_disable {
+                background-color: col(white);
+                border-color: col(picked);                                 
+                @extend %paddings;
+            }
+        } 
+    }
+    &_secondary {
+        &_normal {
+            background-color: col(grey);
+            border-color: col(grey);
+            @extend %paddings;
+        }
+        &_on-hover {
+            background-color: col(light-grey);        
+            border-color: col(light-grey); 
+            @extend %paddings;       
+        }
+        &_disable {
+            background-color: col(dark-grey-2);
+            border-color: col(dark-grey-2);
+            @extend %paddings;
+        }
+    }
+    &_ghost {
+        &normal {
+            background-color: col(white);
+            border-color: col(white);      
+            @extend %paddings;
+        }
+    }
+    
+}
+
+
+@mixin button-with-icon($padding-top, $padding-bottom, $padding-left, $padding-right, $icon-position) {
+    .with-icon {
+        &_accent {
+            &_normal {
+                background-color: col(accent_active);
+                border-color: col(accent_active);
+                padding-left : $padding-left;
+                padding-top : $padding-top;
+                padding-bottom : $padding-bottom;
+                padding-right : $padding-right;
+                border-style: solid;
+                border-width: 2px;    
+                background-repeat: no-repeat;                   
+                background-position: center #{$icon-position};
+                                  
+            }
+        }
+    }
+}
+
+
+@media (min-width: 0px) {
+    @include button-with-icon($btn-padding-top, $btn-padding-bottom, $btn-padding-left, 38px, right 13.5px);
+
+}
+
+@media (min-width: 1366px) {
+    @include button-with-icon($btn-padding-top, $btn-padding-bottom, $btn-padding-left, 38px, right 13.5px);
+
+}
+
+
+
+@media (min-width: 1920px) {
+    @include button-with-icon($btn-padding-top, $btn-padding-bottom, $btn-padding-left, 40px, right 17px);
+
+}
+
+
+

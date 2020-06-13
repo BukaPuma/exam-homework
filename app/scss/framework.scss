@@ -1,0 +1,121 @@
+@import 'parts_framework/colors.scss';
+@import 'parts_framework/text-styles.scss';
+@import 'parts_framework/button-styles.scss';
+@import 'parts_framework/icon-classes.scss';
+
+
+.h2__link {
+    text-decoration: none;
+    @extend .h2;   
+        &_hover, &:hover {
+            text-decoration: underline;
+        }    
+
+}
+
+.caption__link {
+    text-decoration: none;
+    @extend .caption-m-light;   
+        &_hover {
+            text-decoration: underline;
+            
+        }    
+}
+
+.bold {
+    font-weight: bold;
+}
+
+//Сетка
+
+.main {    
+    display: flex;
+    flex-direction: column;
+    width: 99%;
+    height: 100%;
+    padding-left: 28px;
+    padding-top: 28px;
+    padding-bottom: 40px;    
+    padding-right: 34px;
+
+      &__horizontal-wrapper {          
+        width: 100%;
+        display: flex;
+        flex-direction: row;               
+      }      
+
+      &__vertical-wrapper {          
+        width: 100%;            
+        display: flex;      
+        flex-direction: column;
+    }
+
+      &__section-wrapper {          
+        width: 50%;
+        margin-right: 24px;
+        
+      }
+
+      &__big-section-wrapper {          
+        width: 100%;
+        margin-right: 24px;  
+      }
+      
+    .block {
+      margin-bottom: 12px;
+    //  border: 1px solid red;  
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+  
+      @for $item from 1 through 12 {
+        &-#{$item} {
+          height: auto;
+        }
+      }
+    }
+  }
+  
+  //Блоки с иконками и кнопками
+
+  .card {
+        background-color: col(light-grey);
+        border-color: col(grey);
+        display: flex;
+        flex-direction: row; 
+        padding-right: 24px;
+        padding-bottom: 24px;
+        padding-top: 24px;
+        padding-left: 12px;
+        border-width: 2px;
+        border-style: solid;                
+
+        &__icon {
+            width: 48px;
+            height: 48px;
+        }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 12px;
+        }
+
+        &__caption {
+            padding-bottom: 8px;
+
+        }
+        &__content {
+            padding-bottom: 16px;
+        }
+  }
+
+
+  //Установка отступа для кнопок
+  .mgr16 {
+    margin-right: 16px;
+}
+
+
+
+

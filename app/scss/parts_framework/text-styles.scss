@@ -1,0 +1,142 @@
+$letter-spacing: -2%;
+$common-font-family: Graphik RBC LC, serif;
+$screen-min-widths : 1366 1920;
+$body-font-family: KazimirText RBC, serif;
+$suffixes: l m s;
+$fn-color: col(body);
+// $font-style:(medium, regular, light );
+// $font-weight:(500, 400, 300);
+
+$font-styles:(
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semibold: 600
+);
+$button-font-size: 0px;
+$button-line-height: 0px;
+
+$caption-font-sizes: 16px 14px 12px;
+$caption-line-heights: 20px 18px 14px;
+@mixin body-parameters($font-family, $font-size, $line-height, $color) {
+    font-family: $body-font-family;
+    font-size: $font-size;
+    line-height: $line-height;
+    margin-top: 8px;                     
+    color: $color;
+
+}
+
+@mixin caption-parameters($suffix, $font-style, $font-weight, $font-size, $line-height, $color) {
+    .caption-#{$suffix}-#{$font-style} {
+        font-size: $font-size;
+        line-height: $line-height;
+        font-weight: $font-weight;            
+        font-family : $common-font-family;    
+        letter-spacing: $letter-spacing;       
+        color: $color;
+    }
+}
+
+@mixin screen ($screen-min-width : 1920) {
+    $h1-font-size: 32px;
+    $h2-font-size: 24px;
+
+    $button-font-size: 14px;
+    $button-line-height: 14px;
+
+    $body-font-size: 16px;
+    $body-line-height: 24px;
+
+    $caption-font-sizes: 16px 14px 12px;
+    $caption-line-heights: 20px 18px 14px;
+    @media (min-width: $screen-min-width) {        
+        @if ($screen-min-width == 1920) {
+                $h1-font-size: 36px;
+                $h2-font-size: 32px;
+
+                $button-font-size: 18px;
+                $button-line-height: 20px;
+
+                $body-font-size: 18px;
+                $body-line-height: 26px;
+
+                $caption-font-sizes: 18px 16px 14px;
+                $caption-line-heights: 24px 20px 16px;
+            }
+
+    .h1 {
+        font-family: $common-font-family;
+        font-weight: map_get($font-styles, semibold);
+        font-size: $h1-font-size;
+        line-height: $h1-font-size + 8px;
+        letter-spacing: $letter-spacing;
+        color: $fn-color;
+    }
+
+    .h2 {
+        font-family: $common-font-family;
+        font-style: map_get($font-styles, medium);
+        font-size: $h2-font-size;   
+        line-height: $h2-font-size + 8px;
+        letter-spacing: $letter-spacing;
+        color: $fn-color;
+    }
+    
+    .button {
+        font-family: $common-font-family;
+        font-style: Regular;
+        font-size: $button-font-size;
+        line-height: $button-font-size;
+        color: $fn-color;
+    }
+
+
+
+    @each $font-style in (regular, medium, light) {
+        @for $i from 1 through 2 {
+            @include caption-parameters(nth($suffixes, $i), $font-style, map_get($font-styles, $font-style),  nth($caption-font-sizes, $i), nth($caption-line-heights, $i), $fn-color);
+
+        }
+    }
+    @include caption-parameters(s, regular, map_get($font-styles, regular), nth($caption-font-sizes, 3), nth($caption-line-heights, 3), $fn-color);
+
+    .body {
+        &-semibold {
+            @include body-parameters($body-font-family, $body-font-size, $body-line-height, $fn-color);
+            font-weight: map_get($font-styles, semibold);     
+        }
+        &-regular {
+            @include body-parameters($body-font-family, $body-font-size, $body-line-height, $fn-color);
+            font-weight: map-get($font-styles, regular); 
+        }
+    }
+
+    }
+}
+
+@include screen(0px);
+@include screen(1366px);
+@include screen(1920px);
+
+
+%page{
+    font-family : $common-font-family;
+    text-transform : uppercase;
+    font-size: 20px;
+    line-height: 20px;
+    color: $fn-color;
+}
+
+.page {
+
+    &-title {
+        @extend %page;
+        font-weight: 600;
+    }
+    &-subtitle {
+        @extend %page;
+        font-weight: 400;
+
+    }
+}

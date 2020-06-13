@@ -1,0 +1,33 @@
+.buttons {
+    min-width: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+
+}
+
+.article {
+    &__caption {
+        margin-bottom: 24px;
+    }
+
+}
+
+.section {
+    &__caption {
+        margin-bottom: 16px;
+    }
+
+    &__content {
+        margin-bottom: 12px;
+    }
+
+}
+
+
+
+
+

@@ -1,0 +1,18 @@
+
+$common-border-style: solid;
+$common-border-width: 1px;
+$screen-min-width: 1366px; 
+$nav-width : 80px;
+
+.wrapper-common{ 
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; 
+    align-items: stretch;
+}
+
+
+.round-icon {
+    width: 48px;
+    height: 48px;
+}

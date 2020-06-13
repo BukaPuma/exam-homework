@@ -1,0 +1,77 @@
+@mixin class-icon($first-part, $second-part, $filename, $extension) {
+    @if $second_part != "" {
+            .#{$first-part}--#{$second-part}_#{$filename} {
+                background-image: url(./icons/#{$first-part}/#{$second-part}/#{$filename}.#{$extension});
+                
+        } 
+    }
+    @else {
+            .#{$first-part}--#{$filename} {
+                background-image: url(./icons/#{$first-part}/#{$filename}.#{$extension});
+                                
+        }
+
+    }
+}
+
+@mixin market($second-part) {
+    @each $filename in (off, on-hover, on) {
+        @include class-icon("market", $second-part, $filename, "svg");
+    }
+    
+}
+
+@mixin service-normal($second-part) {
+    @include class-icon("service", $second-part, "normal", "svg");    
+}
+@mixin service-normal-hover($second-part) {
+    @each $filename in (normal, active) {
+        @include class-icon("service", $second-part, $filename, "svg");
+    }
+    
+}
+
+@mixin service-all($second-part) {
+    @each $filename in ("normal", "on-hover", "active") {
+        @include class-icon("service", $second-part, $filename, "svg");
+    }    
+}
+
+@each $second-part in ("boots", "calendar", "clothes", "commercial-building", "lux") {
+    @include market($second-part);
+}
+
+
+@each $second-part in ("arrow-down", "arrow-right", "seen", "history", "pdf", "doc", "external-link", "hide-notification",  "search-small") {
+    @include service-normal($second-part);
+}
+
+
+@each $second-part in ("delete", "settings", "eye-closed", "eye-opened") {
+    @include service-normal-hover($second-part);
+}
+
+
+@each $second-part in ("more-horizontal", "qa", "download", "notification", "bookmark", "search" ) {
+    @include service-all($second-part);
+}
+
+
+@include class-icon("profile-icon", "", "profile-icon", "svg");
+
+@include class-icon("market-main-page", "full", "logo", "svg");
+
+.icon {    
+        background-repeat: no-repeat;  
+        background-origin: border-box;
+        @each $prefix in (moz, webkit, o-background) {
+            -#{$prefix}-background-size:100%;
+        }
+        // -moz-background-size:100%;
+        // -webkit-background-size:100%;
+        // -o-background-size:100%;
+        background-size:100%;
+        
+}
+
+
